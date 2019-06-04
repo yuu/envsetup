@@ -103,7 +103,7 @@
       copy:
         src: /tmp/ghq_linux_amd64/ghq
         dest: /usr/local/bin
-        mode: 755
+        mode: 0755
         owner: root
 
     - name: unarchive peco
@@ -116,5 +116,5 @@
       copy:
         src: /tmp/peco_linux_amd64/peco
         dest: /usr/local/bin
-        mode: 755
+        mode: 0755
         owner: root
