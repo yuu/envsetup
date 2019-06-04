@@ -1,0 +1,120 @@
+---
+- hosts: localhost
+  vars:
+    ghq_ver: 0.12.6
+    peco_ver: 0.5.3
+  environment:
+    http_proxy: "{{ lookup('env', 'http_proxy') }}"
+    https_proxy: "{{ lookup('env', 'https_proxy') }}"
+
+  tasks:
+    - name: checking os family and arch
+      debug: msg={{ ansible_os_family }}-{{ ansible_distribution_major_version }}
+      failed_when: ansible_os_family != 'Debian' or ansible_architecture != 'x86_64'
+
+    - name: install fundamental tools from package manager
+      become: true
+      apt:
+        name: "{{ packages }}"
+        state: present
+        update_cache: yes
+      vars:
+        packages:
+          - emacs
+          - vim
+          - ibus-mozc
+          - zsh
+          - libnotify-bin
+          - tmux
+          - git
+          - git-lfs
+          - terminator
+          - xsel
+          - lv
+          - pv
+          - unar
+          - pandoc
+          - jq
+
+    - name: get current ghq version
+      shell: ghq --version | awk '{print $3}'
+      register: current_ghq_ver
+      ignore_errors: True
+      changed_when: False
+
+    - name: download ghq
+      vars:
+        cv: "{{ current_ghq_ver.stdout }}"
+        nv: "{{ ghq_ver }}"
+      get_url:
+        url: "https://github.com/motemen/ghq/releases/download/v{{ ghq_ver }}/ghq_linux_amd64.zip"
+        dest: /tmp
+        checksum: sha1:aec65496a7c84f7384377e68ef975775d8bdcc52
+        force: True
+      notify:
+        - unarchive ghq
+        - install ghq
+      when:
+        - current_ghq_ver.stdout in "not found" or cv is version(nv, '<')
+
+    - name: get current peco version
+      shell: peco --version | awk '{print $3}' | sed -e 's/v//g'
+      register: current_peco_ver
+      ignore_errors: True
+      changed_when: False
+
+    - name: download peco
+      vars:
+        cv: "{{ current_peco_ver.stdout }}"
+        nv: "{{ peco_ver }}"
+      get_url:
+        url: "https://github.com/peco/peco/releases/download/v{{ peco_ver }}/peco_linux_amd64.tar.gz"
+        dest: /tmp
+        checksum: sha1:f628f397616f71b20ad60d35909a19e5e2a30701
+        force: True
+      notify:
+        - unarchive peco
+        - install peco
+      when: current_peco_ver.stdout in "not found" or cv is version(nv, '<')
+
+    - name: install c++ tools
+      become: true
+      apt:
+        name: "{{ packages }}"
+        state: present
+        update_cache: yes
+      vars:
+        packages:
+          - build-essential
+          - cmake
+          - clang-format
+          - llvm
+          - global
+          - libboost-all-dev
+
+  handlers:
+    - name: unarchive ghq
+      unarchive:
+        src: /tmp/ghq_linux_amd64.zip
+        dest: /tmp
+
+    - name: install ghq
+      become: True
+      copy:
+        src: /tmp/ghq_linux_amd64/ghq
+        dest: /usr/local/bin
+        mode: 0755
+        owner: root
+
+    - name: unarchive peco
+      unarchive:
+        src: /tmp/peco_linux_amd64.tar.gz
+        dest: /tmp
+
+    - name: install peco
+      become: True
+      copy:
+        src: /tmp/peco_linux_amd64/peco
+        dest: /usr/local/bin
+        mode: 0755
+        owner: root
