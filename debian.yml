@@ -51,24 +51,11 @@
         dest: /tmp
         checksum: sha1:aec65496a7c84f7384377e68ef975775d8bdcc52
         force: True
-      register: result
+      notify:
+        - unarchive ghq
+        - install ghq
       when:
         - current_ghq_ver.stdout in "not found" or cv is version(nv, '<')
-
-    - name: unarchive ghq
-      unarchive:
-        src: /tmp/ghq_linux_amd64.zip
-        dest: /tmp
-      when: result.changed == True
-
-    - name: install ghq
-      become: True
-      copy:
-        src: /tmp/ghq_linux_amd64/ghq
-        dest: /usr/local/bin
-        mode: 755
-        owner: root
-      when: result.changed == True
 
     - name: get current peco version
       shell: peco --version | awk '{print $3}' | sed -e 's/v//g'
@@ -85,23 +72,10 @@
         dest: /tmp
         checksum: sha1:f628f397616f71b20ad60d35909a19e5e2a30701
         force: True
-      register: result
+      notify:
+        - unarchive peco
+        - install peco
       when: current_peco_ver.stdout in "not found" or cv is version(nv, '<')
-
-    - name: unarchive peco
-      unarchive:
-        src: /tmp/peco_linux_amd64.tar.gz
-        dest: /tmp
-      when: result.changed == True
-
-    - name: install peco
-      become: True
-      copy:
-        src: /tmp/peco_linux_amd64/peco
-        dest: /usr/local/bin
-        mode: 755
-        owner: root
-      when: result.changed == True
 
     - name: install c++ tools
       become: true
@@ -117,3 +91,30 @@
           - llvm
           - global
           - libboost-all-dev
+
+  handler:
+    - name: unarchive ghq
+      unarchive:
+        src: /tmp/ghq_linux_amd64.zip
+        dest: /tmp
+
+    - name: install ghq
+      become: True
+      copy:
+        src: /tmp/ghq_linux_amd64/ghq
+        dest: /usr/local/bin
+        mode: 755
+        owner: root
+
+    - name: unarchive peco
+      unarchive:
+        src: /tmp/peco_linux_amd64.tar.gz
+        dest: /tmp
+
+    - name: install peco
+      become: True
+      copy:
+        src: /tmp/peco_linux_amd64/peco
+        dest: /usr/local/bin
+        mode: 755
+        owner: root
