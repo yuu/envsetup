@@ -40,6 +40,7 @@
       shell: ghq --version | awk '{print $3}'
       register: current_ghq_ver
       ignore_errors: True
+      changed_when: False
 
     - name: download ghq
       vars:
@@ -73,6 +74,7 @@
       shell: peco --version | awk '{print $3}' | sed -e 's/v//g'
       register: current_peco_ver
       ignore_errors: True
+      changed_when: False
 
     - name: download peco
       vars:
