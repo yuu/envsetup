@@ -92,7 +92,7 @@
           - global
           - libboost-all-dev
 
-  handler:
+  handlers:
     - name: unarchive ghq
       unarchive:
         src: /tmp/ghq_linux_amd64.zip
