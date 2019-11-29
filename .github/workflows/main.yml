@@ -1,0 +1,16 @@
+name: check pull request
+
+on: [push]
+
+jobs:
+  test:
+    name: Test on debian testing on docker
+    runs-on: ubuntu-18.04
+    container:
+      image: debian:testing
+
+    steps:
+    - uses: actions/checkout@v1
+
+    - name: lint
+      uses: ansible/ansible-lint-action@v4.1.0
