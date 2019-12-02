@@ -3,11 +3,9 @@ name: main
 on: [push]
 
 jobs:
-  test:
-    name: Test on debian testing on docker
+  lint:
+    name: Lint
     runs-on: ubuntu-18.04
-    container:
-      image: debian:testing
 
     steps:
     - uses: actions/checkout@v1
