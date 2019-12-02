@@ -5,8 +5,6 @@ on: [push]
 jobs:
   lint_on_debian:
     runs-on: ubuntu-18.04
-    container:
-      image: debian:testing-20190910
 
     steps:
     - uses: actions/checkout@v1
