@@ -25,3 +25,23 @@ jobs:
       run: |
         ansible-playbook debian.yml --syntax-check
         ansible-lint debian.yml
+
+  lint_on_macos:
+    runs-on: [macOS-latest]
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Setup Python environment
+        uses: actions/setup-python@v1.1.1
+        with:
+          python-version: '3.x'
+          architecture: x64
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Lint playbook
+        run: |
+          ansible-playbook debian.yml --syntax-check
+          ansible-lint debian.yml
