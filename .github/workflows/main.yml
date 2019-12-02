@@ -1,4 +1,4 @@
-name: check pull request
+name: main
 
 on: [push]
 
