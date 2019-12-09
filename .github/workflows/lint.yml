@@ -22,17 +22,16 @@ jobs:
       with:
         path: ~/.cache/pip
         key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
-        restore-keys: |
-          ${{ runner.os }}-pip-
+        restore-keys: ${{ runner.os }}-pip-
 
     - name: Install dependencies
-      run: |
-        pip install -r requirements.txt
+      run: pip install -r requirements.txt
+
+    - name: Check Syntax
+      run: ansible-playbook debian.yml --syntax-check
 
     - name: Lint playbook
-      run: |
-        ansible-playbook debian.yml --syntax-check
-        ansible-lint debian.yml
+      run: ansible-lint debian.yml
 
   lint_on_macos:
     runs-on: [macOS-latest]
@@ -50,14 +49,13 @@ jobs:
         with:
           path: ~/Library/Caches/pip
           key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-
+          restore-keys: ${{ runner.os }}-pip-
 
       - name: Install dependencies
-        run: |
-          pip install -r requirements.txt
+        run: pip install -r requirements.txt
+
+      - name: Check Syntax
+        run: ansible-playbook macos.yml --syntax-check
 
       - name: Lint playbook
-        run: |
-          ansible-playbook macos.yml --syntax-check
-          ansible-lint macos.yml
+        run: ansible-lint macos.yml
