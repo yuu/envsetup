@@ -1,0 +1,15 @@
+---
+- hosts: devmachine
+  vars:
+    ghq_ver: 0.12.6
+    peco_ver: 0.5.3
+
+  tasks:
+    - name: install fundamental tools from package manager
+      apt:
+        name: "{{ packages }}"
+        state: present
+        update_cache: yes
+      vars:
+        packages:
+          - emacs
