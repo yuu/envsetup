@@ -43,5 +43,5 @@ jobs:
 
       - name: Lint playbook
         run: |
-          ansible-playbook debian.yml --syntax-check
-          ansible-lint debian.yml
+          ansible-playbook macos.yml --syntax-check
+          ansible-lint macos.yml
