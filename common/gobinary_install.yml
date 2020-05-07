@@ -1,5 +1,6 @@
 ---
 - hosts: devmachine
+  gather_facts: no
   vars:
     cmd: ""
     new_ver: 0.0.0
@@ -10,10 +11,10 @@
 
   tasks:
     - name: "get current version for {{ cmd }}"
-      shell: "{{ get_ver_cmd }}"
+      command: "{{ get_ver_cmd }}"
       register: current_ver
-      ignore_errors: True
       changed_when: False
+      failed_when: False
 
     - name: "download file for {{ cmd }}"
       get_url:
@@ -22,14 +23,14 @@
         checksum: "{{ checksum }}"
         force: True
       when:
-        - current_ver.stdout in "not found" or current_ver.stdout is version(new_ver, '<')
+        - current_ver.rc != 0
 
     - name: unarchive
       unarchive:
         src: "/tmp/{{ url.split('/')[-1] }}"
         dest: /tmp
       when:
-        - current_ver.stdout in "not found" or current_ver.stdout is version(new_ver, '<')
+        - current_ver.rc != 0
 
     - name: install
       become: True
@@ -39,4 +40,4 @@
         mode: 0755
         owner: root
       when:
-        - current_ver.stdout in "not found" or current_ver.stdout is version(new_ver, '<')
+        - current_ver.rc != 0

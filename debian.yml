@@ -63,7 +63,7 @@
   vars:
     cmd: peco
     new_ver: 0.5.3
-    get_ver_cmd: peco --version | awk '{print $3}' | sed -e 's/v//g'
+    get_ver_cmd: peco --version
     url: "https://github.com/peco/peco/releases/download/v{{ new_ver }}/peco_linux_amd64.tar.gz"
     checksum: sha1:f628f397616f71b20ad60d35909a19e5e2a30701
     unpackcmd: /tmp/peco_linux_amd64/peco
