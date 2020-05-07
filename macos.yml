@@ -92,6 +92,24 @@
           - font-source-han-code-jp
           - font-symbola
 
+    # general
+    - name: Show scroll bars
+      # Automatically based on mouse or trackpad: Automatic
+      # When scrolling: WhenScrolling
+      # Always: Always
+      osx_defaults:
+        key: AppleShowScrollBars
+        type: string
+        value: Automatic
+
+    - name: Click in the scroll bar to
+      # Jump to the next page: 0
+      # Jump to the spot that's clicked: 1
+      osx_defaults:
+        key: AppleScrollerPagingBehavior
+        type: int
+        value: 1
+
     # keyboard
      # keyboard
     - name: Key Repeat
