@@ -94,3 +94,38 @@
           - font-source-code-pro
           - font-source-han-code-jp
           - font-symbola
+
+    # keyboard
+     # keyboard
+    - name: Key Repeat
+      osx_defaults:
+        key: KeyRepeat
+        type: int
+        value: 2
+
+    - name: Delay Until Repeat
+      osx_defaults:
+        key: InitialKeyRepeat
+        type: int
+        value: 15
+
+    - name: Use F1, .., keys as standard function keys
+      osx_defaults:
+        key: com.apple.keyboard.fnState
+        type: int
+        value: 0
+     # shortcuts
+     # input sources
+
+    # trackpad
+    - name: Tracking speed
+      osx_defaults:
+        key: com.apple.trackpad.scaling
+        type: float
+        value: 3
+
+    - name: Scroll direction Natural
+      osx_defaults:
+        key: com.apple.swipescrolldirection
+        type: int
+        value: 0
