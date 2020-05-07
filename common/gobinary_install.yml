@@ -1,5 +1,6 @@
 ---
 - hosts: devmachine
+  gather_facts: no
   vars:
     cmd: ""
     new_ver: 0.0.0
