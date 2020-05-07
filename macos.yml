@@ -1,8 +1,5 @@
 ---
 - hosts: devmachine
-  vars:
-    ghq_ver: 0.12.6
-    peco_ver: 0.5.3
 
   tasks:
     - name: homebrew taps
