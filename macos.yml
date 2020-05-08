@@ -144,3 +144,10 @@
         key: com.apple.swipescrolldirection
         type: int
         value: 0
+
+    - name: Removing window shadows with screen capture
+      osx_defaults:
+        domain: com.apple.screencapture
+        key: disable-shadow
+        type: bool
+        value: True
