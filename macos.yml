@@ -65,6 +65,7 @@
         packages:
           - bettertouchtool
           - karabiner-elements
+          - alfred
           - dash
           - day-o
           - google-chrome
