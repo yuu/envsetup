@@ -12,49 +12,27 @@
 
     - name: install fundamental tools from brew
       homebrew:
-        name: "{{ packages | map(attribute='name') | list }}"
-        install_options: "{{ packages | map(attribute='opt') | list }}"
+        name: "{{ packages }}"
         state: present
         update_homebrew: no
       vars:
         packages:
-          - { name: zsh, opt: '' }
-          - { name: tmux, opt: '' }
-          - { name: reattach-to-user-namespace, opt: '' }
-          - { name: terminal-notifier, opt: '' }
-          - { name: gnu-tar, opt: '' }
-          - { name: grep, opt: 'with-default-names' }
-          - { name: emacs, opt: '' }
-          - { name: git, opt: '' }
-          - { name: git-lfs, opt: '' }
-          - { name: ghq, opt: '' }
-          - { name: peco, opt: '' }
-          - { name: htop, opt: '' }
-          - { name: jq, opt: '' }
-          - { name: pv, opt: '' }
-          - { name: ripgrep, opt: '' }
-          - { name: unar, opt: '' }
-          - { name: lv, opt: '' }
-          # c/c++
-          - { name: llvm, opt: '' }
-          - { name: clang-format, opt: '' }
-          - { name: cmake, opt: '' }
-          - { name: ccls, opt: '' }
-          # go
-          - { name: go, opt: '' }
-          - { name: dep, opt: '' }
-          # swift
-          - { name: carthage, opt: '' }
-          - { name: swiftlint, opt: '' }
-          # nodejs
-          - { name: node, opt: '' }
-          # misc
-          - { name: graphviz, opt: '' }
-          - { name: hugo, opt: '' }
-          - { name: ipython, opt: '' }
-          - { name: markdown, opt: '' }
-          - { name: nmap, opt: '' }
-          - { name: socat, opt: '' }
+          - zsh
+          - tmux
+          - reattach-to-user-namespace
+          - terminal-notifier
+          - gnu-tar
+          - grep
+          - git
+          - git-lfs
+          - ghq
+          - peco
+          - htop
+          - jq
+          - pv
+          - ripgrep
+          - unar
+          - lv
 
     - name: install fundamental tools from cask
       homebrew_cask:
@@ -86,11 +64,11 @@
       homebrew_cask:
         name: "{{ fonts }}"
         state: present
+        update_homebrew: yes
       vars:
         fonts:
           - font-source-code-pro
           - font-source-han-code-jp
-          - font-symbola
 
     # general
     - name: Show scroll bars
