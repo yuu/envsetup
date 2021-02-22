@@ -33,6 +33,12 @@
           - ripgrep
           - unar
           - lv
+          - llvm
+          - clang-format
+          - cmake
+          - ccls
+          - go
+          - grpc
 
     - name: install fundamental tools from cask
       homebrew_cask:
@@ -47,7 +53,6 @@
           - day-o
           - google-chrome
           - google-japanese-ime
-          - dropbox
           - discord
           - emacs
           - iterm2
@@ -59,6 +64,12 @@
           - vlc
           - gimp
           - sketch
+          - brave-browser
+          - alfred
+          - jasper
+          - vnc-viewer
+          - ngrok
+          - kap
 
     - name: install fonts
       homebrew_cask:
@@ -69,6 +80,7 @@
         fonts:
           - font-source-code-pro
           - font-source-han-code-jp
+          - font-source-han-mono
 
     # general
     - name: Show scroll bars
