@@ -6,6 +6,6 @@ cryptography==2.7
 Jinja2==2.10.1
 MarkupSafe==1.1.1
 pycparser==2.19
-PyYAML==5.1
+PyYAML==5.4
 ruamel.yaml==0.15.96
 six==1.12.0
