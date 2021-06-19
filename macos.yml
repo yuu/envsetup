@@ -39,6 +39,10 @@
           - ccls
           - go
           - grpc
+          - docker-completion
+          - docker-compose-completion
+          - zsh-completion
+
 
     - name: install fundamental tools from cask
       homebrew_cask:
@@ -70,6 +74,8 @@
           - vnc-viewer
           - ngrok
           - kap
+          - obs
+          - google-drive
 
     - name: install fonts
       homebrew_cask:
