@@ -42,7 +42,8 @@
           - docker-completion
           - docker-compose-completion
           - zsh-completion
-
+          - aws-vault
+          - imagemagick
 
     - name: install fundamental tools from cask
       homebrew_cask:
