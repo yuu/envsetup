@@ -44,6 +44,7 @@
           - zsh-completion
           - aws-vault
           - imagemagick
+          - mas
 
     - name: install fundamental tools from cask
       homebrew_cask:
