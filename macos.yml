@@ -149,3 +149,12 @@
         key: disable-shadow
         type: bool
         value: True
+
+    - name: Rearrange automatically keep the space arragement
+      osx_defaults:
+        domain: com.apple.dock
+        key: mru-spaces
+        type: bool
+        value: False
+      tags:
+        - defaults
