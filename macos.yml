@@ -40,7 +40,6 @@
           - go
           - grpc
           - docker-completion
-          - docker-compose-completion
           - zsh-completion
           - aws-vault
           - imagemagick
