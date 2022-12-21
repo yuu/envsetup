@@ -33,12 +33,6 @@
           - ripgrep
           - unar
           - lv
-          - llvm
-          - clang-format
-          - cmake
-          - ccls
-          - go
-          - grpc
           - docker-completion
           - zsh-completion
           - aws-vault
@@ -60,7 +54,6 @@
           - google-japanese-ime
           - discord
           - emacs
-          - iterm2
           - gpg-suite
           - docker
           - keycast
@@ -68,7 +61,6 @@
           - blu-ray-player
           - vlc
           - gimp
-          - sketch
           - brave-browser
           - alfred
           - jasper
@@ -87,7 +79,6 @@
         fonts:
           - font-source-code-pro
           - font-source-han-code-jp
-          - font-source-han-mono
 
     # general
     - name: Show scroll bars
