@@ -9,6 +9,8 @@
       vars:
         repositories:
           - homebrew/cask-fonts
+          - yuu/cask-fonts
+          - 1password/tap
 
     - name: install fundamental tools from brew
       homebrew:
@@ -38,6 +40,9 @@
           - aws-vault
           - imagemagick
           - mas
+          - nkf
+          - ffmpeg
+          - direnv
 
     - name: install fundamental tools from cask
       homebrew_cask:
@@ -53,7 +58,6 @@
           - brave-browser
           - google-japanese-ime
           - discord
-          - emacs
           - gpg-suite
           - docker
           - keycast
@@ -69,6 +73,9 @@
           - kap
           - obs
           - google-drive
+          - alacritty
+          - 1password-cli
+          - obsidian
 
     - name: install fonts
       homebrew_cask:
