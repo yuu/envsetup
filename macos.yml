@@ -16,7 +16,7 @@
       homebrew:
         name: "{{ packages }}"
         state: present
-        update_homebrew: no
+        update_homebrew: false
       vars:
         packages:
           - zsh
@@ -48,7 +48,7 @@
       homebrew_cask:
         name: "{{ packages }}"
         state: present
-        update_homebrew: no
+        update_homebrew: false
       vars:
         packages:
           - bettertouchtool
@@ -81,7 +81,7 @@
       homebrew_cask:
         name: "{{ fonts }}"
         state: present
-        update_homebrew: yes
+        update_homebrew: true
       vars:
         fonts:
           - font-source-code-pro
@@ -145,13 +145,13 @@
         domain: com.apple.screencapture
         key: disable-shadow
         type: bool
-        value: True
+        value: true
 
     - name: Rearrange automatically keep the space arragement
       osx_defaults:
         domain: com.apple.dock
         key: mru-spaces
         type: bool
-        value: False
+        value: false
       tags:
         - defaults
