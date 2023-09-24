@@ -76,6 +76,7 @@
           - alacritty
           - 1password-cli
           - obsidian
+          - cloudflare-warp
 
     - name: install fonts
       homebrew_cask:
