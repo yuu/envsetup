@@ -156,3 +156,15 @@
         value: false
       tags:
         - defaults
+
+- name: Install lltsv
+  import_playbook: common/gobinary_install.yml
+  vars:
+    cmd: lltsv
+    new_ver: v0.7.0
+    get_ver_cmd: lltsv --version
+    url: "https://github.com/sonots/lltsv/releases/download/{{ new_ver }}/lltsv_darwin_amd64"
+    checksum: sha1:f628f397616f71b20ad60d35909a19e5e2a30701
+    unpackcmd: /tmp/
+  tags:
+    - debug

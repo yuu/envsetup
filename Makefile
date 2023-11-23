@@ -22,3 +22,6 @@ mac: ## run mac
 
 linux: ## run linux
 	@ansible-playbook debian.yml
+
+debug:
+	@ansible-playbook macos.yml --tags "debug"
