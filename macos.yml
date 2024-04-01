@@ -20,6 +20,7 @@
       vars:
         packages:
           - zsh
+          - zsh-completion
           - tmux
           - reattach-to-user-namespace
           - terminal-notifier
@@ -35,14 +36,29 @@
           - ripgrep
           - unar
           - lv
-          - docker-completion
-          - zsh-completion
-          - aws-vault
-          - imagemagick
-          - mas
           - nkf
+          - mas
+          - imagemagick
           - ffmpeg
-          - direnv
+
+    - name: install dev tools from brew
+      homebrew:
+        name: "{{ packages }}"
+        state: present
+        update_homebrew: false
+      vars:
+        packages:
+          - docker-completion
+
+    - name: install environment tools from brew
+      homebrew:
+        name: "{{ packages }}"
+        state: present
+        update_homebrew: false
+      vars:
+        packages:
+          - cloudflared
+          - aws-vault
 
     - name: install fundamental tools from cask
       homebrew_cask:
@@ -53,29 +69,34 @@
         packages:
           - bettertouchtool
           - karabiner-elements
-          - dash
-          - google-chrome
-          - brave-browser
-          - google-japanese-ime
-          - discord
-          - gpg-suite
-          - docker
-          - keycast
-          - licecap
-          - blu-ray-player
-          - vlc
-          - gimp
-          - brave-browser
           - raycast
-          - jasper
-          - vnc-viewer
-          - ngrok
-          - kap
-          - obs
-          - google-drive
-          - alacritty
           - 1password-cli
+          - google-chrome
+          - google-japanese-ime
+          - google-drive
+          - discord
+          - vlc
+          - obs
           - obsidian
+
+    - name: install dev tools from brew
+      homebrew_cask:
+        name: "{{ packages }}"
+        state: present
+        update_homebrew: false
+      vars:
+        packages:
+          - docker
+          - jasper
+          - alacritty
+
+    - name: install environment tools from cask
+      homebrew_cask:
+        name: "{{ packages }}"
+        state: present
+        update_homebrew: false
+      vars:
+        packages:
           - cloudflare-warp
 
     - name: install fonts
