@@ -145,7 +145,7 @@
       osx_defaults:
         key: com.apple.keyboard.fnState
         type: int
-        value: 0
+        value: 1
      # shortcuts
      # input sources
 
