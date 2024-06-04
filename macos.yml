@@ -22,8 +22,10 @@
           - zsh
           - zsh-completion
           - tmux
+          - fzf
           - reattach-to-user-namespace
           - terminal-notifier
+          - coreutils
           - gnu-tar
           - grep
           - git
@@ -58,7 +60,6 @@
       vars:
         packages:
           - cloudflared
-          - aws-vault
 
     - name: install fundamental tools from cask
       homebrew_cask:
