@@ -92,6 +92,7 @@
           - docker
           - jasper
           - alacritty
+          - figma
           - pinact
 
     - name: install environment tools from cask
