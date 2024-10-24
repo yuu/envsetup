@@ -33,6 +33,7 @@
           - git-lfs
           - ghq
           - peco
+          - fzf
           - htop
           - jq
           - pv
