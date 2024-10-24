@@ -11,6 +11,7 @@
           - homebrew/cask-fonts
           - yuu/cask-fonts
           - 1password/tap
+          - suzuki-shunsuke/pinact
 
     - name: install fundamental tools from brew
       homebrew:
@@ -90,6 +91,7 @@
           - docker
           - jasper
           - alacritty
+          - pinact
 
     - name: install environment tools from cask
       homebrew_cask:
