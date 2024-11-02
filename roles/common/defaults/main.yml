@@ -1,0 +1,7 @@
+---
+cmd: ""
+new_ver: "0.0.0"
+get_ver_cmd: "{{ cmd }} --version"
+url: ""
+checksum: ""
+unpackcmd: ""

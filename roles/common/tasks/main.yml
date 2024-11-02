@@ -1,0 +1,40 @@
+---
+- name: Install unzip
+  become: true
+  apt:
+    name: unzip
+    state: present
+
+- name: "get current version for {{ cmd }}"
+  command: "{{ get_ver_cmd }}"
+  register: current_ver
+  changed_when: False
+  failed_when: False
+
+- name: "download file for {{ cmd }}"
+  get_url:
+    url: "{{ url }}"
+    dest: /tmp
+    checksum: "{{ checksum }}"
+    force: True
+  when:
+    - current_ver.rc != 0
+
+- name: unarchive
+  unarchive:
+    src: "/tmp/{{ url.split('/')[-1] }}"
+    dest: /tmp
+    remote_src: "{{ ansible_connection == 'ssh' }}"
+  when:
+    - current_ver.rc != 0
+
+- name: install
+  become: True
+  copy:
+    src: "{{ unpackcmd }}"
+    dest: /usr/local/bin
+    mode: 0755
+    owner: root
+    remote_src: "{{ ansible_connection == 'ssh' }}"
+  when:
+    - current_ver.rc != 0
