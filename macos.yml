@@ -17,7 +17,7 @@
       homebrew:
         name: "{{ packages }}"
         state: present
-        update_homebrew: false
+        update_homebrew: true
       vars:
         packages:
           - zsh
@@ -50,10 +50,11 @@
       homebrew:
         name: "{{ packages }}"
         state: present
-        update_homebrew: false
+        update_homebrew: true
       vars:
         packages:
           - docker-completion
+          - pinact
 
     - name: install environment tools from brew
       homebrew:
@@ -95,7 +96,6 @@
           - alacritty
           - wezterm
           - figma
-          - pinact
 
     - name: install environment tools from cask
       homebrew_cask:
