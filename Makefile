@@ -21,4 +21,4 @@ mac: ## run mac
 	@ansible-playbook macos.yml
 
 linux: ## run linux
-	@ansible-playbook debian.yml
+	@ansible-playbook debian.yml --ask-pass --ask-become-pass
