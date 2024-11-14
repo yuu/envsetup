@@ -38,6 +38,7 @@
           - jq
           - pv
           - ripgrep
+          - fd
           - unar
           - lv
           - nkf
