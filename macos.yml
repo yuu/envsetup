@@ -116,6 +116,7 @@
         fonts:
           - font-source-code-pro
           - font-source-han-code-jp
+          - font-hackgen-nerd
 
     # general
     - name: Show scroll bars
