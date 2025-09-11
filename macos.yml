@@ -8,8 +8,6 @@
         state: present
       vars:
         repositories:
-          - homebrew/cask-fonts
-          - yuu/cask-fonts
           - 1password/tap
           - suzuki-shunsuke/pinact
 
