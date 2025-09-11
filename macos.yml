@@ -140,6 +140,15 @@
           - font-hackgen-nerd
           - font-noto-sans-cjk-jp
 
+    - name: install CAD
+      homebrew_cask:
+        name: "{{ packages }}"
+        state: present
+        update_homebrew: false
+      vars:
+        packages:
+          - qcad
+
     # general
     - name: Show scroll bars
       # Automatically based on mouse or trackpad: Automatic
