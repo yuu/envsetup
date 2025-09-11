@@ -32,6 +32,7 @@
           - imagemagick
           - ffmpeg
           - sshpass
+          - inotify-tools
           # debian
           - xsel
 
