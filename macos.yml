@@ -36,9 +36,11 @@
           - fzf
           - htop
           - jq
+          - jnv # interactive jq
           - pv
           - ripgrep
           - fd
+          - dust # du
           - unar
           - lv
           - nkf
@@ -46,6 +48,25 @@
           - imagemagick
           - ffmpeg
           - sshpass
+          - fswatch
+          - graphviz
+          - pandoc
+          - yazi
+          - zoxide
+          - mediainfo
+          - exiftool
+          - mpv
+          - sox # play command
+            # - vhs
+            # font-hackgen-nerd
+            # ncdu
+            # deskpad
+          - nmap
+          # - pdf-tools
+          - navi
+          - qpdf
+          - arp-scan # network util
+          - cidr
 
     - name: install dev tools from brew
       homebrew:
@@ -56,6 +77,7 @@
         packages:
           - docker-completion
           - pinact
+          - sleek # SQL formatter
 
     - name: install environment tools from brew
       homebrew:
@@ -95,8 +117,9 @@
           - docker
           - jasper
           - alacritty
-          - wezterm
+          - wezterm@nightly
           - figma
+          - owasp-zap
 
     - name: install environment tools from cask
       homebrew_cask:
@@ -117,6 +140,7 @@
           - font-source-code-pro
           - font-source-han-code-jp
           - font-hackgen-nerd
+          - font-noto-sans-cjk-jp
 
     # general
     - name: Show scroll bars
