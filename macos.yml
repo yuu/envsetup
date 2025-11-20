@@ -75,6 +75,7 @@
           - docker-completion
           - pinact
           - sleek # SQL formatter
+          - wrkflw # run github actions locally
 
     - name: install environment tools from brew
       homebrew:
