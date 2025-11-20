@@ -18,7 +18,6 @@
         update_homebrew: true
       vars:
         packages:
-          - zsh
           - zsh-completion
           - tmux
           - fzf
