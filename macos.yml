@@ -28,6 +28,7 @@
           - grep
           - git
           - git-lfs
+          - git-delta
           - ghq
           - peco
           - fzf
@@ -105,6 +106,7 @@
           - vlc
           - obs
           - obsidian
+          - font-monaspace
 
     - name: install dev tools from brew
       homebrew_cask:
