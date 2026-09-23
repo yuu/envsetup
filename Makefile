@@ -1,5 +1,5 @@
 .DEFAULT_GOAL := help
-.PHONY: help mac linux homebrew
+.PHONY: help mac linux homebrew nix-setup nix-bootstrap nix-darwin nix-linux nix-switch
 
 COMMAND_LIST := ${MAKEFILE_LIST}
 
@@ -22,3 +22,17 @@ mac: ## run mac
 
 linux: ## run linux
 	@ansible-playbook debian.yml --ask-pass --ask-become-pass
+
+nix-setup: ## generate user.nix from current env
+	@printf '{\n  username = "%s";\n  hostname = "%s";\n}\n' "$$USER" "$$(hostname -s)" > user.nix
+
+nix-bootstrap: nix-setup ## bootstrap nix-darwin (first time only)
+	sudo nix --extra-experimental-features "nix-command flakes" run nix-darwin/master#darwin-rebuild -- switch --flake .
+
+nix-darwin: nix-setup ## apply nix-darwin configuration (macOS)
+	sudo darwin-rebuild switch --flake .
+
+nix-linux: nix-setup ## apply home-manager configuration (Linux)
+	home-manager switch --flake .
+
+nix-switch: nix-darwin ## apply nix-darwin configuration (alias)
