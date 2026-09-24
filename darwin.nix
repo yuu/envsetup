@@ -53,7 +53,7 @@ in
     (tesseract.override { enableLanguages = [ "eng" "jpn" "jpn_vert" ]; })
     _1password-cli _1password-gui aerospace blender cloudflare-warp discord emacs firefox
     google-chrome inkscape kitty monitorcontrol qcad slack
-    tinycast vlc-bin vscode wezterm wireshark
+    tinycast vlc-bin vscode wezterm wireshark poppler-utils
   ] ++ builtins.attrValues (removeAttrs myPkgs [
     "bettertouchtool"   # pkg は残すがインストールしない
   ]);
