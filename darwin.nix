@@ -99,7 +99,7 @@ in
 
   system.defaults = {
     NSGlobalDomain = {
-      AppleShowScrollBars              = "Automatic";
+      AppleShowScrollBars              = "WhenScrolling";
       AppleScrollerPagingBehavior      = true;
       KeyRepeat                        = 2;
       InitialKeyRepeat                 = 15;
