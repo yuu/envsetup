@@ -41,7 +41,8 @@ in
     imagemagick ffmpeg sshpass fswatch graphviz pandoc
     yazi zoxide mediainfo exiftool mpv sox
     nmap navi qpdf arp-scan timg
-    gnuradio yt-dlp zbar bandwhich
+    # gnuradio  # soapyuhd が uhd 4.11 でビルド不可
+    yt-dlp zbar bandwhich
     sleek
     cloudflared
     _7zz aria2 assimp automake btop clamav cmigemo delta diff-pdf docker-compose figlet
@@ -53,7 +54,22 @@ in
     (tesseract.override { enableLanguages = [ "eng" "jpn" "jpn_vert" ]; })
     _1password-cli _1password-gui aerospace blender cloudflare-warp discord emacs firefox
     google-chrome inkscape kitty monitorcontrol qcad slack
-    tinycast vlc-bin vscode wezterm wireshark poppler-utils
+    (tinycast.overrideAttrs (old: rec {
+      version = "0.11.12";
+      src = fetchurl {
+        url = "https://github.com/abue-ammar/tinycast/releases/download/v${version}/Tinycast-${version}.dmg";
+        hash = "sha256-W/e/AxPCYmFBoLPVr3wCjHIQxh+rRkjPxHO0sj4jBTQ=";
+      };
+      # nixpkgs 側はベータ版のアプリ名 "Tinycast Beta.app" で決め打ち
+      sourceRoot = "Tinycast.app";
+      installPhase = ''
+        runHook preInstall
+        mkdir -p "$out/Applications/Tinycast.app"
+        cp -R . "$out/Applications/Tinycast.app"
+        runHook postInstall
+      '';
+    }))
+    vlc-bin vscode wezterm wireshark poppler-utils
   ] ++ builtins.attrValues (removeAttrs myPkgs [
     "bettertouchtool"   # pkg は残すがインストールしない
   ]);

@@ -7,11 +7,11 @@
 
 stdenvNoCC.mkDerivation (finalAttrs: {
   pname = "dbx";
-  version = "0.6.20";
+  version = "0.6.35";
 
   src = fetchurl {
     url = "https://github.com/t8y2/dbx/releases/download/v${finalAttrs.version}/DBX_${finalAttrs.version}_arm64.dmg";
-    hash = "sha256-5v5INXMaxkYmfbspsfqoi0Ie1bFDmgr+Xir7gfrN83k=";
+    hash = "sha256-vuT8sJOTbgal+2KSG9IG0DnymLpaSlooGudACZOS32w=";
   };
 
   nativeBuildInputs = [ undmg ];

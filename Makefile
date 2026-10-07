@@ -35,4 +35,5 @@ nix-darwin: nix-setup ## apply nix-darwin configuration (macOS)
 nix-linux: nix-setup ## apply home-manager configuration (Linux)
 	home-manager switch --flake .
 
-nix-switch: nix-darwin ## apply nix-darwin configuration (alias)
+nix-del-gen: ## delete all generation
+	sudo nix-collect-garbage -d
